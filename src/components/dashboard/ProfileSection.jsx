@@ -1,7 +1,7 @@
 function ProfileSection(){
     return (
-       <span className="profile-section w-1/4">Profile-section
-       </span>
+       <div className="profile-section h-full">Profile-section
+       </div>
     )
 }
 export default ProfileSection;
