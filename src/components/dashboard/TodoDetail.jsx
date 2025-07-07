@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
 function TodoDetail() {
     return (
-        <span className="todo-detail-section">
-            detail section
-        </span>
+        <div className="todo-detail-section">
+           todo detail section
+        </div>
     );
 }
 
