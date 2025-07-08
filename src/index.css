@@ -1,5 +1,7 @@
 @import "tailwindcss";
 *{
-  border:1px dotted red;
+  border:1px dotted black;
+  /* padding:1px;
+  margin:1px; */
   box-sizing: border-box;
 }
