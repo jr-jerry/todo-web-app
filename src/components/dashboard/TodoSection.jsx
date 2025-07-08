@@ -29,7 +29,7 @@ function TodoSection() {
              <motion.div initial={{opacity:0,scale:0}}
                         animate={{opacity:1,scale:1}}
                         transition={{duration:0.5}} className="flex flex-col h-full">
-                <div className="input-tag h-[150px] mb-4 h-[30%]">
+                <div className="input-tag  mb-4 h-[30%]">
                     <input type="text" placeholder="Enter your task" className="w-full h-[80%] block mx-auto bg-gray-50"
                     value={inputText}
                     onChange={(e)=>setInputText(e.target.value)}>
@@ -46,7 +46,9 @@ function TodoSection() {
                     </div>
                     
                 </div>
-                <div className="todo-list flex-1 overflow-y-auto h-[40%] ">
+                <div className="todo-list flex-1 overflow-y-auto h-[40%] border-t border-r border-l border-gray-300">
+                    <h3 className="mx-2 py-2">TodoList</h3>
+                    
                     {
                         todo.map((item)=>{
                             return(
@@ -60,7 +62,8 @@ function TodoSection() {
                     }
                 </div>
                
-                <div className="completed-list overflow-y-auto flex-1 h-[30%] ">
+                <div className="completed-list overflow-y-auto flex-1 h-[30%] border-r border-l border-b border-gray-300">
+                    <h3 className="mx-2 py-2">CompletedList</h3>
                    {todoCompleted.map((item)=>
                    <div key={item.id} className="line-through px-4 border-t border-gray-300 py-2 pl-10">
                     {item.text}
