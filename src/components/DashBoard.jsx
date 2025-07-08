@@ -5,7 +5,7 @@ import { AnimatePresence,motion } from "framer-motion";
 
 function DashBoard({ visible }) {
   return (
-    <div className="dash-board grid grid-cols-[250px_2fr_200px] overflow-y-auto h-full p-4">
+    <div className="dash-board grid grid-cols-[250px_2fr_200px] overflow-y-auto h-[90%] p-4">
       
       {/* Left sidebar - ProfileSection */}
       <div className="col-span-1">
@@ -24,8 +24,8 @@ function DashBoard({ visible }) {
       </div>
 
       {/* Center content - TodoSection */}
-      <div className="col-span-1">
-        <div className="w-full max-w-3xl mx-auto">
+      <div className="col-span-1 h-full">
+        <div className="w-full max-w-3xl mx-auto h-full">
           <TodoSection />
         </div>
       </div>

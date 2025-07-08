@@ -30,7 +30,7 @@ function TodoSection() {
                         animate={{opacity:1,scale:1}}
                         transition={{duration:0.5}} className="flex flex-col h-full">
                 <div className="input-tag h-[150px] mb-4 h-[30%]">
-                    <input type="text" placeholder="Enter your task" className="w-full h-[80%] block mx-auto"
+                    <input type="text" placeholder="Enter your task" className="w-full h-[80%] block mx-auto bg-gray-50"
                     value={inputText}
                     onChange={(e)=>setInputText(e.target.value)}>
                     </input>
@@ -39,18 +39,18 @@ function TodoSection() {
                             
                         </div>
                     <motion.button  whilehover={{scale:1.5}} whileTap={{scale:0.8}} transition={{type:'spring',stiffness:100}} backgroundColor="#4f4f4f"
-                    className="absolute px-4 right-2 rounded-4xl z-3 h-[100%] text-center bg-amber-100 border-amber-200 border-2" onClick={()=>AddText(inputText)} >
+                    className="absolute px-4 right-2 rounded-4xl z-3 h-[100%] text-center bg-green-300 border-green-400 border-2" onClick={()=>AddText(inputText)} >
                        
                             add 
                     </motion.button>
                     </div>
                     
                 </div>
-                <div className="todo-list flex-1 overflow-y-auto h-[40%]">
+                <div className="todo-list flex-1 overflow-y-auto h-[40%] ">
                     {
                         todo.map((item)=>{
                             return(
-                                <div key={item.id} className="flex gap-2">
+                                <div key={item.id} className="flex gap-2 my-2 py-2 border-t border-gray-300">
                                     <input type="checkbox" value={item.completed} className="mx-2" onChange={()=>removeTodo(item.id)} />
                                     <p>{item.text}</p>
                                     
@@ -60,9 +60,9 @@ function TodoSection() {
                     }
                 </div>
                
-                <div className="completed-list overflow-y-auto flex-1 h-[30%]">
+                <div className="completed-list overflow-y-auto flex-1 h-[30%] ">
                    {todoCompleted.map((item)=>
-                   <div key={item.id} className="line-through px-4">
+                   <div key={item.id} className="line-through px-4 border-t border-gray-300 py-2 pl-10">
                     {item.text}
                     </div>)}
                 </div>

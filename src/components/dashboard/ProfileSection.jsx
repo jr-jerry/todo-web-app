@@ -1,6 +1,6 @@
 function ProfileSection(){
     return (
-       <div className="profile-section h-full">Profile-section
+       <div className="profile-section h-full bg-gray-50 h-full">Profile-section
        </div>
     )
 }
