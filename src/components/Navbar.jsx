@@ -16,7 +16,7 @@ function Navbar({ toggleShowProfile }) {
 
   return (
     
-      <div className="bg-amber-100 flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-4 h-[10%]">
+      <div className="flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-4 h-[10%]">
         <span className="left-navbar flex justify-evenly gap-2">
           <span className="hamburger-icon flex items-center">
             <motion.button whilehover={{scale:1.1}} whileTap={{scale:0.8}} transition={{type:'spring',stiffness:100}}>

@@ -12,6 +12,7 @@ function TodoSection() {
             completed:false,
         }
         setTodo([...todo,newTodo]);
+        setInputText("");
     }
 
     const removeTodo=(id)=>{
@@ -29,17 +30,17 @@ function TodoSection() {
              <motion.div initial={{opacity:0,scale:0}}
                         animate={{opacity:1,scale:1}}
                         transition={{duration:0.5}} className="flex flex-col h-full">
-                <div className="input-tag  mb-4 h-[30%]">
-                    <input type="text" placeholder="Enter your task" className="w-full h-[80%] block mx-auto bg-gray-50"
+                <div className="input-tag  mb-4 shadow-lg h-[30%] relative">
+                    <input type="text" placeholder="Enter your task" className="w-full h-[80%] block mx-auto bg-gray-50 pl-5 outline-none"
                     value={inputText}
                     onChange={(e)=>setInputText(e.target.value)}>
                     </input>
-                    <div className=" h-[20%] relative ">
+                    <div className=" h-[20%]  bg-gray-50">
                         <div className="caleder-time-section">
                             
                         </div>
                     <motion.button  whilehover={{scale:1.5}} whileTap={{scale:0.8}} transition={{type:'spring',stiffness:100}} backgroundColor="#4f4f4f"
-                    className="absolute px-4 right-2 rounded-4xl z-3 h-[100%] text-center bg-green-300 border-green-400 border-2" onClick={()=>AddText(inputText)} >
+                    className="absolute px-4 right-2 bottom-1 rounded-xl z-3  text-center bg-black text-white border-gray-300 border-2 my-2 drop-shadow-lg" onClick={()=>AddText(inputText)} >
                        
                             add 
                     </motion.button>
@@ -52,7 +53,7 @@ function TodoSection() {
                     {
                         todo.map((item)=>{
                             return(
-                                <div key={item.id} className="flex gap-2 my-2 py-2 border-t border-gray-300">
+                                <div key={item.id} className="flex gap-2 my-2 py-2 border-t border-gray-300 ">
                                     <input type="checkbox" value={item.completed} className="mx-2" onChange={()=>removeTodo(item.id)} />
                                     <p>{item.text}</p>
                                     

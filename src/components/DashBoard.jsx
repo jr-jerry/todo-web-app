@@ -11,10 +11,12 @@ function DashBoard({ visible }) {
       <div className="col-span-1">
         <div className="w-full h-full">
             <AnimatePresence>
-                {!visible && <motion.div initial={{x:-250,opacity:0}}
-                            animate={{opacity:1,x:0}}
-                            exit={{opacity:0,x:-250}}
-                            transition={{duration:0.5}}>
+                {!visible && <motion.div 
+                initial={{x:-250,opacity:0}}
+                animate={{opacity:1,x:0}}
+                exit={{opacity:0,x:-250}}
+transition={{duration:0.5}}
+className="h-full">
                                 <ProfileSection />
                             </motion.div>
                 }
@@ -31,7 +33,7 @@ function DashBoard({ visible }) {
       </div>
 
       {/* Right sidebar - TodoDetail */}
-      <div className="col-span-1">
+      <div className="col-span-1 h-full border">
         <TodoDetail />
       </div>
     </div>
