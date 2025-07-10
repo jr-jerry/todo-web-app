@@ -1,58 +1,61 @@
-import { useState } from 'react'
-import { Menu01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { UserListIcon } from '@hugeicons/core-free-icons'
-import { Moon02Icon } from '@hugeicons/core-free-icons'
-import { GridViewIcon } from '@hugeicons/core-free-icons'
-import { motion } from 'framer-motion'
+import { useState, useContext } from 'react';
+import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { motion } from 'framer-motion';
+import { ThemeContext } from '../context/ThemeContext';
 
 function Navbar({ toggleShowProfile }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleToggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-    toggleShowProfile()
-  }
+    setIsMenuOpen(!isMenuOpen);
+    toggleShowProfile();
+  };
 
   return (
-    
-      <div className="flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-4 h-[10%]">
-        <span className="left-navbar flex justify-evenly gap-2">
-          <span className="hamburger-icon flex items-center">
-            <motion.button whilehover={{scale:1.1}} whileTap={{scale:0.8}} transition={{type:'spring',stiffness:100}}>
-            <button onClick={handleToggleMenu}>
-              <HugeiconsIcon
-                icon={Menu01Icon}
-                className={`${isMenuOpen ? 'rotate-90' : ''}`}
-              />
-            </button>
-            </motion.button>
-            
-            <span className="logo mx-2">Todo</span>
-          </span>
-        </span>
-        <span className="right-navbar flex items-center">
-          <span className="search-button">
-            <input
-              type="text"
-              placeholder="search here"
-              className="mx-2 shadow-lg rounded-2xl p-1 border-1 border-amber-200"
-            />
-          </span>
-          <span className="grid-button mx-2">
-            <button>
-              <HugeiconsIcon icon={GridViewIcon} />
-            </button>
-          </span>
-          <span className="theme-change mx-2">
-            <button>
-              <HugeiconsIcon icon={Moon02Icon} />
-            </button>
-          </span>
-        </span>
+    <div className={`flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-4 h-[10%] ${theme === "dark" ? "bg-[#242424] text-white" : "bg-gray-100 text-gray-800"}`}>
+      <div className="left-navbar flex items-center gap-2">
+        <motion.button 
+          onClick={handleToggleMenu}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="p-1"
+        >
+          <HugeiconsIcon
+            icon={Menu01Icon}
+            className={`transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
+          />
+        </motion.button>
+        <span className="logo font-semibold text-lg">Todo</span>
       </div>
-    
-  )
+      
+      <div className="right-navbar flex items-center gap-4">
+        <div className="search-button">
+          <input
+            type="text"
+            placeholder="Search here..."
+            className={`px-3 py-1 rounded-full text-sm border focus:outline-none focus:ring-2 focus:ring-amber-300 ${
+              theme === 'dark' 
+                ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-400' 
+                : 'bg-white border-gray-300 text-gray-800 placeholder-gray-500'
+            }`}
+          />
+        </div>
+        
+        <button className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
+          <HugeiconsIcon icon={GridViewIcon} />
+        </button>
+        
+        <button 
+          onClick={toggleTheme} 
+          className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+        >
+          <HugeiconsIcon icon={Moon02Icon} />
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;
