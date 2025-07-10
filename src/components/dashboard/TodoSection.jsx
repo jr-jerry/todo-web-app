@@ -2,11 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import {TodoContext} from "../../context/TodoContext";
 function TodoSection() {
-    const [todo, setTodo] = useState([]);
-    const [todoCompleted, setTodoCompleted] = useState([]);
+    // const [todo, setTodo] = useState([]);
+    const {todo,setTodo,todoCompleted,setTodoCompleted}=useContext(TodoContext);
+    // const [todoCompleted, setTodoCompleted] = useState([]);
     const [inputText, setInputText] = useState("");
-    const [completed, setComplete] = useState(false);
     const { theme } = useContext(ThemeContext);
     const AddText = (text) => {
         if (text.trim() === "") return;

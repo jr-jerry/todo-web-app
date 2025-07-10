@@ -3,8 +3,10 @@ import TodoDetail from "./dashboard/TodoDetail";
 import TodoSection from "./dashboard/TodoSection";
 import { AnimatePresence, motion } from "framer-motion";
 
+
 function DashBoard({ visible }) {
   return (
+
     <div className="dash-board grid grid-cols-[250px_2fr_200px] overflow-y-auto h-[90%] p-4">
 
       {/* Left sidebar - ProfileSection */}
