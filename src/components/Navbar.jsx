@@ -15,7 +15,7 @@ function Navbar({ toggleShowProfile }) {
   };
 
   return (
-    <div className={`flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-4 h-[10%] ${theme === "dark" ? "bg-[#242424] text-white" : "bg-gray-100 text-gray-800"}`}>
+    <div className={`flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-2 sm:px-4 h-[10%] ${theme === "dark" ? "bg-[#242424] text-white" : "bg-gray-100 text-gray-800"}`}>
       <div className="left-navbar flex items-center gap-2">
         <motion.button 
           onClick={handleToggleMenu}
@@ -31,8 +31,8 @@ function Navbar({ toggleShowProfile }) {
         <span className="logo font-semibold text-lg">Todo</span>
       </div>
       
-      <div className="right-navbar flex items-center gap-4">
-        <div className="search-button">
+      <div className="right-navbar flex items-center gap-2 md:gap-4">
+        <div className="search-button hidden md:block">
           <input
             type="text"
             placeholder="Search here..."
@@ -51,7 +51,7 @@ function Navbar({ toggleShowProfile }) {
           className="p-1 rounded-full"
         >
           <HugeiconsIcon 
-            icon={grid ? GridViewIcon : ListSettingIcon}
+            icon={!grid ? GridViewIcon : ListSettingIcon}
             transition={{ duration: 0.5 }}
           />
         </motion.button>
