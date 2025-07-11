@@ -1,13 +1,14 @@
 import { useState, useContext } from 'react';
-import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon,Sun02Icon } from '@hugeicons/core-free-icons';
+import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon,Sun02Icon, ListSettingIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'framer-motion';
+import {LayoutContext} from '../context/LayoutContext'
 import { ThemeContext } from '../context/ThemeContext';
 
 function Navbar({ toggleShowProfile }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useContext(ThemeContext);
-
+  const {grid,toggleGrid}=useContext(LayoutContext);
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     toggleShowProfile();
@@ -18,9 +19,9 @@ function Navbar({ toggleShowProfile }) {
       <div className="left-navbar flex items-center gap-2">
         <motion.button 
           onClick={handleToggleMenu}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.1 ,transition:{duration:0.5},backgroundColor:theme=="light"?"#dcdcdc":"#4C604F" }}
           whileTap={{ scale: 0.9 }}
-          className="p-1"
+          className="p-1 rounded-full"
         >
           <HugeiconsIcon
             icon={Menu01Icon}
@@ -43,16 +44,26 @@ function Navbar({ toggleShowProfile }) {
           />
         </div>
         
-        <button className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
-          <HugeiconsIcon icon={GridViewIcon} />
-        </button>
-        
-        <button 
-          onClick={toggleTheme} 
-          className="p-1 hover:bg-gray-200 dark:hover:bg-gray-200 rounded-full transition-colors"
+        <motion.button 
+          onClick={toggleGrid}
+          whileHover={{ scale: 1.1 ,transition:{duration:0.5},backgroundColor:theme=="light"?"#dcdcdc":"#4C604F" }}
+          whileTap={{ scale: 0.9 }}
+          className="p-1 rounded-full"
         >
-          <HugeiconsIcon icon={theme=='light'?Moon02Icon:Sun02Icon} />
-        </button>
+          <HugeiconsIcon 
+            icon={grid ? GridViewIcon : ListSettingIcon}
+            transition={{ duration: 0.5 }}
+          />
+        </motion.button>
+        
+        <motion.button 
+          onClick={toggleTheme} 
+          whileHover={{ scale: 1.1 ,transition:{duration:0.5},backgroundColor:theme=="light"?"#dcdcdc":"#4C604F" }}
+          whileTap={{ scale: 0.9 }}
+          className="p-1 rounded-full"
+        >
+          <HugeiconsIcon  className={`transition-transform duration-200`} icon={theme=='light'?Moon02Icon:Sun02Icon} transition={{ duration:0.5 }} />
+        </motion.button>
       </div>
     </div>
   );

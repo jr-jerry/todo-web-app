@@ -4,6 +4,7 @@ import Homepage from './components/homepage'
 import { ThemeProvider } from './context/ThemeContext'
 import { TodoProvider } from './context/TodoContext'
 import { DetailProvider } from './context/DetailContext'
+import { LayoutProvider } from './context/LayoutContext'
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
     <ThemeProvider>
       <TodoProvider>
         <DetailProvider>
-        <Homepage />
+        <LayoutProvider>
+           <Homepage />
+        </LayoutProvider>
         </DetailProvider>
       </TodoProvider>
     </ThemeProvider>
