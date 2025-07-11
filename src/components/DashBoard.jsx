@@ -2,9 +2,12 @@ import ProfileSection from "./dashboard/ProfileSection";
 import TodoDetail from "./dashboard/TodoDetail";
 import TodoSection from "./dashboard/TodoSection";
 import { AnimatePresence, motion } from "framer-motion";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
 
 function DashBoard({ visible }) {
+    const {theme}=useContext(ThemeContext);
   return (
 
     <div className="dash-board grid grid-cols-[250px_2fr_200px] overflow-y-auto h-[90%] p-4">
@@ -35,7 +38,7 @@ function DashBoard({ visible }) {
       </div>
 
       {/* Right sidebar - TodoDetail */}
-      <div className="col-span-1 h-full border">
+      <div className={`col-span-1 h-full  p-5 ${theme=="light"?"bg-white":"bg-[#2f3630]"}`}>
         <TodoDetail />
       </div>
     </div>

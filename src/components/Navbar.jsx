@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon } from '@hugeicons/core-free-icons';
+import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon,Sun02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'framer-motion';
 import { ThemeContext } from '../context/ThemeContext';
@@ -49,9 +49,9 @@ function Navbar({ toggleShowProfile }) {
         
         <button 
           onClick={toggleTheme} 
-          className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+          className="p-1 hover:bg-gray-200 dark:hover:bg-gray-200 rounded-full transition-colors"
         >
-          <HugeiconsIcon icon={Moon02Icon} />
+          <HugeiconsIcon icon={theme=='light'?Moon02Icon:Sun02Icon} />
         </button>
       </div>
     </div>

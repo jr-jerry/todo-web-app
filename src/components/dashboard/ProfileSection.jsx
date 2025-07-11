@@ -1,9 +1,9 @@
 import {motion} from "framer-motion";
 import {useContext} from "react";
 import {ThemeContext} from "../../context/ThemeContext";
-
+import DonutChart from "../../Chart/DonutChart";
 function ProfileSection() {
-    const {theme,toggleTheme}=useContext(ThemeContext);
+    const {theme}=useContext(ThemeContext);
     return (
         <div className="profile-section h-full ">
             <div className="image-up-behind-div h-[10%] relative ">
@@ -23,11 +23,11 @@ function ProfileSection() {
                 <div className={`add-list-section ${theme=="light"?"bg-white":"bg-[#232323]"} h-[10%] mb-4`}>
                 </div>
                 <div className={`h-[45%] ${theme=="light"?"bg-white":"bg-[#232323]"} chat-section`}>
-                    <div className="no-off-task-section">
+                    <div className="no-of-task-section h-[20%]">
 
                     </div>
-                    <div className="chat-section">
-
+                    <div className="chart-section w-[80%] h-[80%] mx-auto pl-2">
+                        <DonutChart/> 
                     </div>
 
                 </div>

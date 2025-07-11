@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import {TodoContext} from "../../context/TodoContext";
+import {DetailContext} from "../../context/DetailContext";
 function TodoSection() {
-    // const [todo, setTodo] = useState([]);
+   
     const {todo,setTodo,todoCompleted,setTodoCompleted}=useContext(TodoContext);
-    // const [todoCompleted, setTodoCompleted] = useState([]);
+    
     const [inputText, setInputText] = useState("");
     const { theme } = useContext(ThemeContext);
+    const {setDetail}=useContext(DetailContext);    
     const AddText = (text) => {
         if (text.trim() === "") return;
         const newTodo = {
@@ -59,8 +61,8 @@ function TodoSection() {
                         todo.map((item) => {
                             return (
                                 <div key={item.id} className={`flex gap-2 my-2 py-2 border-t border-gray-300 ${theme=="light"?"text-black":"text-white"}`}>
-                                    <input type="checkbox" value={item.completed} className="mx-2" onChange={() => removeTodo(item.id)} />
-                                    <p>{item.text}</p>
+                                    <input type="checkbox" value={item.completed} className="mx-2" onChange={() => removeTodo(item.id)}/>
+                                    <p onClick={()=>setDetail(item)}>{item.text.split(" ").slice(0,2).join(" ")}</p>
 
                                 </div>
                             )
@@ -71,8 +73,8 @@ function TodoSection() {
                 <div className="completed-list overflow-y-auto flex-1 h-[30%] border-r border-l border-b border-gray-300">
                     <h3 className={`mx-2 py-2 ${theme=="light"?"text-black":"text-white"}`}>CompletedList</h3>
                     {todoCompleted.map((item) =>
-                        <div key={item.id} className={`line-through px-4 border-t border-gray-300 py-2 pl-10 ${theme=="light"?"text-black":"text-white"}`}>
-                            {item.text}
+                        <div key={item.id} onClick={()=>setDetail(item)} className={`line-through px-4 border-t border-gray-300 py-2 pl-10 ${theme=="light"?"text-black":"text-white"}`}>
+                            {item.text.split(" ").slice(0,2).join(" ")}
                         </div>)}
                 </div>
             </motion.div>
