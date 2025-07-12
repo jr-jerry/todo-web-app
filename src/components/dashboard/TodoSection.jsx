@@ -1,27 +1,42 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import {TodoContext} from "../../context/TodoContext";
 import {DetailContext} from "../../context/DetailContext";
 import {LayoutContext} from "../../context/LayoutContext";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CalendarIcon,ClockIcon } from "@hugeicons/core-free-icons";
 function TodoSection() {
    
     const {todo,setTodo,todoCompleted,setTodoCompleted}=useContext(TodoContext);
     
     const [inputText, setInputText] = useState("");
+    const [date,setDate]=useState(new Date().toDateString());
+    const [time,setTime]=useState(new Date().toLocaleTimeString());
+    const ref=useRef(null);
+    const timeRef=useRef(null);
     const { theme } = useContext(ThemeContext);
     const {setDetail}=useContext(DetailContext);    
     const {grid}=useContext(LayoutContext);
+
+    const handleDateChange=()=>{
+        ref.current.showPicker();
+    }
+    const handleTimeChange=()=>{
+        timeRef.current.showPicker();
+    }
     const AddText = (text) => {
         if (text.trim() === "") return;
         const newTodo = {
             id: todo.length + 1,
             text: text,
             completed: false,
+            date:date
         }
         setTodo([...todo, newTodo]);
         setInputText("");
+        setDate(new Date().toDateString());
     }
 
     const removeTodo = (id) => {
@@ -40,13 +55,22 @@ function TodoSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }} className="flex flex-col h-full">
                 <div className="input-tag  mb-4 shadow-lg h-[30%] relative">
-                    <input type="text" placeholder="Enter your task" className={`w-full h-[80%] block mx-auto ${theme == "light" ? "bg-white text-black" : "bg-[#2f3630] text-white"} pl-5 outline-none`}
+                    <input type="text" placeholder="Enter your task description" 
+                    className={`w-full h-[80%] block mx-auto ${theme == "light" ? "bg-white text-black" : "bg-[#2f3630] text-white"} pl-5 outline-none`}
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}>
                     </input>
                     <div className={` h-[20%]  ${theme == "light" ? "bg-gray-50" : "bg-[#2f3630]"}`}>
-                        <div className="caleder-time-section">
+                        <div className="caleder-time-section z-1 bg-red-100 flex h-full gap-2 relative">
+                           <input type="date" name="date" id="" className="inline -block w-[1%] h-[1%] opacity-0" value={date} ref={ref} onChange={(e)=>setDate(e.target.value.toDateString())} />
 
+                           <motion.button onClick={handleDateChange} whilehover={{ scale: 1.5 }} whileTap={{ scale: 0.8 }} transition={{ duration:0.5}} backgroundColor="#4f4f4f">
+                            <HugeiconsIcon icon={CalendarIcon} />
+                           </motion.button>
+                           <input type="time" ref={timeRef} name="time" id="" className="inline-block absolute top-0 left-10 opacity-0 "/>
+                           <motion.button whilehover={{ scale: 1.5 }} whileTap={{ scale: 0.8 }} transition={{ duration:0.5}} backgroundColor="#4f4f4f">
+                            <HugeiconsIcon icon={ClockIcon}  className="relative" onClick={handleTimeChange}/>
+                           </motion.button>
                         </div>
                         <motion.button whilehover={{ scale: 1.5 }} whileTap={{ scale: 0.8 }} transition={{ type: 'spring', stiffness: 100 }} backgroundColor="#4f4f4f"
                             className="absolute px-4 right-2 bottom-1 rounded-xl z-3  text-center bg-black text-white border-gray-300 border-2 my-2 drop-shadow-lg" onClick={() => AddText(inputText)} >
@@ -63,7 +87,7 @@ function TodoSection() {
                     {
                         todo.map((item) => {
                             return (
-                                <div key={item.id} className={`m-2 py-2 border-t ${grid==true? "shadow-lg rounded-md w-full sm:w-[48%] md:w-[31%] lg:w-[23%] max-h-[50px] ":"w-full"} border-gray-300 ${theme=="light"?"text-black bg-gray-200":"text-white bg-[#2f3630]"}`}>
+                                <div key={item.id} className={`m-2 py-2 border-t ${grid==true? "shadow-lg rounded-md w-[20%] max-h-[50px] ":"w-[90%]"} border-gray-300 ${theme=="light"?"text-black bg-gray-200":"text-white bg-[#2f3630]"}`}>
 
                                     <input type="checkbox" value={item.completed} className="mx-2" onChange={() => removeTodo(item.id)}/>
 

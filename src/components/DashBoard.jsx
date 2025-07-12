@@ -10,13 +10,13 @@ function DashBoard({ visible }) {
     const {theme}=useContext(ThemeContext);
   return (
 
-    <div className="dash-board grid lg:grid-cols-[250px_2fr_200px] overflow-y-auto h-[90%] p-4">
+    <div className="dash-board grid grid-cols-[250px_2fr_200px] overflow-y-auto h-[90%] p-4">
 
       {/* Left sidebar - ProfileSection */}
-      <div className={`${visible ? 'block' : 'hidden'} lg:block col-span-1`}>
+      <div className="col-span-1">
         <div className="w-full h-full">
           <AnimatePresence>
-            {visible && <motion.div
+            {!visible && <motion.div
               initial={{ x: -250, opacity: 0 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -250 }}
@@ -38,7 +38,7 @@ function DashBoard({ visible }) {
       </div>
 
       {/* Right sidebar - TodoDetail */}
-      <div className={`hidden lg:block col-span-1 h-full p-5 ${theme == "light" ? "bg-white" : "bg-[#2f3630]"}`}>
+      <div className={`col-span-1 h-full  p-5 ${theme=="light"?"bg-white":"bg-[#2f3630]"}`}>
         <TodoDetail />
       </div>
     </div>

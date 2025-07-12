@@ -8,6 +8,7 @@ function TodoDetail() {
     return (
         <div className={`todo-detail-section ${theme=="light"?"bg-[#f9fafb] text-black":"bg-[#242424] text-white"}  outline-none  border-none h-full p-4`}>
            {`${detail? detail.text: "click on any task to get detail"}`}
+           <p>{detail?.date}</p>
         </div>
     );
 }
