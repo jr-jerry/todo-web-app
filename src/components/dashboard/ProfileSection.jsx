@@ -5,8 +5,8 @@ import DonutChart from "../../Chart/DonutChart";
 function ProfileSection() {
     const {theme}=useContext(ThemeContext);
     return (
-        <div className="profile-section h-full ">
-            <div className="image-up-behind-div h-[10%] relative ">
+        <div className="profile-section h-[80vh] absolute   transform -translate-x-[10%] -translate-y-[5%] w-[80vw]">
+            <div className="image-up-behind-div h-[10%] relative bg-gray-100">
                 <img src="https://img.freepik.com/premium-photo/happy-man-ai-generated-portrait-user-profile_1119669-1.jpg?w=2000" alt="profile-image" className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 rounded-full h-24 w-24 z-3" />
 
 

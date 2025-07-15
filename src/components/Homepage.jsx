@@ -8,7 +8,7 @@ function Homepage() {
     const {theme}=useContext(ThemeContext);
   
     return (
-        <div className={`main  px-6 flex flex-col h-screen ${theme == "light" ? "bg-gray-100" : "bg-[#242424]"}`}>
+        <div className={`main  px-6 flex flex-col s:bg-amber-300 h-screen ${theme == "light" ? "bg-gray-100" : "bg-[#242424]"}`}>
             <Navbar toggleShowProfile={() => setVisible(prev => !prev)} />
             <DashBoard visible={visible} />
         </div>

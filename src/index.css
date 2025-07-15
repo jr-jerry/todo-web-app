@@ -5,3 +5,7 @@
   margin:1px; */
   box-sizing: border-box;
 }
+:root {
+  --breakpoint-s: 18.75rem;
+  --breakpoint-mb: 31rem; /* 500 px */
+}

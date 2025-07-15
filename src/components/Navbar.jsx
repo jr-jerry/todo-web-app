@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon,Sun02Icon, ListSettingIcon } from '@hugeicons/core-free-icons';
+import { Menu01Icon, UserListIcon, Moon02Icon, GridViewIcon,Sun02Icon, ListSettingIcon,ArrowRight01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'framer-motion';
 import {LayoutContext} from '../context/LayoutContext'
@@ -15,7 +15,15 @@ function Navbar({ toggleShowProfile }) {
   };
 
   return (
-    <div className={`flex justify-between items-center m-2 p-2 rounded-lg shadow-lg px-2 sm:px-4 h-[10%] ${theme === "dark" ? "bg-[#242424] text-white" : "bg-gray-100 text-gray-800"}`}>
+    <div className={`
+    flex 
+    justify-between 
+    items-center 
+    m-2 p-2 
+    rounded-lg 
+    shadow-lg 
+    px-2 
+    h-[10%] ${theme === "dark" ? "bg-[#242424] text-white" : "bg-gray-100 text-gray-800"}`}>
       <div className="left-navbar flex items-center gap-2">
         <motion.button 
           onClick={handleToggleMenu}
@@ -24,8 +32,8 @@ function Navbar({ toggleShowProfile }) {
           className="p-1 rounded-full"
         >
           <HugeiconsIcon
-            icon={Menu01Icon}
-            className={`transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}
+            icon={ArrowRight01Icon}
+            className={`transition-transform duration-200 ${isMenuOpen ? 'rotate-180' : ''}`}
           />
         </motion.button>
         <span className="logo font-semibold text-lg">Todo</span>
